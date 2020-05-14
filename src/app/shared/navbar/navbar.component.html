@@ -50,6 +50,10 @@
                             <p class="d-none">fullscreen</p>
                         </a>
                     </li>
+                    <li class="nav-item mr-2">
+                        <button class="btn btn-secondary" (click)="is_connected = true" *ngIf="!is_connected">se connecter</button>
+                    </li>
+                    <ng-container *ngIf="is_connected">
                     <li class="nav-item" ngbDropdown [placement]="placement">
                         <a class="nav-link position-relative" id="dropdownBasic2" ngbDropdownToggle>
                             <i class="ft-bell font-medium-3 blue-grey darken-4"></i>
@@ -99,20 +103,20 @@
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic3" class="text-left">
                             <a class="dropdown-item py-1" routerLink="/pages/profile">
                                 <i class="ft-edit mr-2"></i>
-                                <span>My Profile</span>
+                                <span>profile</span>
                             </a>
                             <a class="dropdown-item py-1" routerLink="/inbox">
                                 <i class="ft-mail mr-2"></i>
-                                <span>My Inbox</span>
+                                <span>boite de réception</span>
                             </a>
                             <a class="dropdown-item py-1" href="javascript:;">
                                 <i class="ft-settings mr-2"></i>
-                                <span>Settings</span>
+                                <span>paramètres</span>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:;">
+                            <a class="dropdown-item" href="javascript:;" (click)="is_connected = false">
                                 <i class="ft-power mr-2"></i>
-                                <span>Logout</span>
+                                <span>quitter</span>
                             </a>
                         </div>
                     </li>
@@ -123,7 +127,7 @@
                             <p class="d-none">Notifications Sidebar</p>
                         </a>
                     </li>
-
+                    </ng-container>
                 </ul>
             </div>
         </div>

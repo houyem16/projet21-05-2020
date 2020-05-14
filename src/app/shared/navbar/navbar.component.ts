@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   toggleClass = "ft-maximize";
   placement = "bottom-right";
   public isCollapsed = true;
+  is_connected = false;
   layoutSub: Subscription;
   @Output()
   toggleHideSidebar = new EventEmitter<Object>();
