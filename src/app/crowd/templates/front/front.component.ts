@@ -33,6 +33,7 @@ export class FrontComponent implements OnInit, AfterViewInit, OnDestroy {
   isSidebar_lg = false;
   bgColor = 'black';
   bgImage = 'assets/img/sidebar-bg/01.jpg';
+  enable_sidebar = false;
 
   public config: any = {};
 

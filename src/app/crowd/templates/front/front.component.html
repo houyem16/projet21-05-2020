@@ -2,22 +2,22 @@
         #wrapper
         class="wrapper"
         [ngClass]="{
-    'nav-collapsed': iscollapsed,
+    'nav-collapsed': iscollapsed || !enable_sidebar,
     'menu-collapsed': iscollapsed,
     'sidebar-sm': isSidebar_sm,
     'sidebar-lg': isSidebar_lg
   }"
         [dir]="options.direction"
 >
-  <div
+  <div    *ngIf="enable_sidebar"
           #appSidebar
           appSidebar
           class="app-sidebar"
           (toggleHideSidebar)="toggleHideSidebar($event)"
           [ngClass]="{ 'hide-sidebar': hideSidebar }"
           data-active-color="white"
-          [attr.data-background-color]="bgColor"
-          [attr.data-image]="bgImage"
+          attr.data-background-color="white"
+          attr.data-image=""
   >
     <app-sidebar></app-sidebar>
     <div class="sidebar-background" #sidebarBgImage></div>
@@ -27,6 +27,10 @@
     <div class="main-content">
       <div class="content-wrapper">
         <div class="container-fluid">
+          <br/>
+          <br/>
+          <br/>
+          <br/>
           <router-outlet></router-outlet>
         </div>
       </div>
@@ -34,5 +38,7 @@
     <app-footer></app-footer>
   </div>
   <app-notification-sidebar></app-notification-sidebar>
+    <!--
   <app-customizer (directionEvent)="getOptions($event)"></app-customizer>
+  -->
 </div>
