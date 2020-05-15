@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {FrontComponent} from './templates/front/front.component';
+import {LoginPageComponent} from './login/login-page.component';
+import {RegisterPageComponent} from './register/register-page.component';
 
 const routes: Routes = [
   {
@@ -12,6 +14,12 @@ const routes: Routes = [
         loadChildren: () => import('./front/front.module').then(m => m.FrontModule)
       }
     ]
+  },
+  {
+    path: 'login', component: LoginPageComponent
+  },
+  {
+    path: 'register', component: RegisterPageComponent
   }
 ];
 

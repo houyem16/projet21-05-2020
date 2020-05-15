@@ -51,7 +51,7 @@
                         </a>
                     </li>
                     <li class="nav-item mr-2">
-                        <button class="btn btn-secondary" (click)="is_connected = true" *ngIf="!is_connected">se connecter</button>
+                        <button class="btn btn-secondary" routerLink="/crowd/login" *ngIf="!is_connected">se connecter</button>
                     </li>
                     <ng-container *ngIf="is_connected">
                     <li class="nav-item" ngbDropdown [placement]="placement">
