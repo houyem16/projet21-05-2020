@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from '@angular/router';
+import {UtilisateurService} from '../providers/utilisateur.service';
 
 @Component({
     selector: 'app-login-page',
@@ -11,9 +12,27 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class LoginPageComponent {
 
     @ViewChild('f', {static: false}) loginForm: NgForm;
+    credentials: {
+      email: string,
+      pwd: string
+    };
 
     constructor(private router: Router,
-        private route: ActivatedRoute) { }
+        private route: ActivatedRoute, private userserv: UtilisateurService) {
+        this.credentials = {email: '', pwd: ''};
+    }
+
+        dologin() {
+          this.userserv.login(this.credentials).subscribe(
+              (res) => {
+                  if (res.status === true) {
+                      alert('ok');
+                  } else {
+                      alert(res.msg);
+                  }
+              }
+          );
+        }
 
     // On submit button click
     onSubmit() {

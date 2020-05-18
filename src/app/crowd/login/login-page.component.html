@@ -27,11 +27,15 @@
                     type="text"
                     class="form-control mb-3"
                     placeholder="email"
+                    name="email"
+                    [(ngModel)]="credentials.email"
                   />
                   <input
                     type="password"
                     class="form-control mb-3"
                     placeholder="mot de passe"
+                    name="pwd"
+                    [(ngModel)]="credentials.pwd"
                   />
 
                   <div class="fg-actions d-flex justify-content-between">
@@ -47,7 +51,7 @@
                     <div class="recover-pass">
                       <button class="btn btn-primary">
                         <a
-                          [routerLink]="['/crowd/login']"
+                          (click)="dologin()"
                           class="text-decoration-none text-white"
                           >se connecter</a
                         >

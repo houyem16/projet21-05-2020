@@ -6,13 +6,15 @@ import { FrontComponent } from './templates/front/front.component';
 import {SharedModule} from '../shared/shared.module';
 import {LoginPageComponent} from './login/login-page.component';
 import {RegisterPageComponent} from './register/register-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [FrontComponent, LoginPageComponent, RegisterPageComponent],
   imports: [
     CommonModule,
     CrowdRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class CrowdModule { }
