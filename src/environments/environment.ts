@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost/projet/public/api/'
+  api: 'http://localhost/pfa2/projet/public/api/'
 };

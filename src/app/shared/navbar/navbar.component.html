@@ -51,9 +51,10 @@
                         </a>
                     </li>
                     <li class="nav-item mr-2">
-                        <button class="btn btn-secondary" routerLink="/crowd/login" *ngIf="!is_connected">se connecter</button>
+                        <p *ngIf="connected_email != ''">{{ connected_email }}</p>
+                        <button class="btn btn-secondary" routerLink="/crowd/login" *ngIf="connected_email == ''">se connecter</button>
                     </li>
-                    <ng-container *ngIf="is_connected">
+                    <ng-container *ngIf="connected_email != ''">
                     <li class="nav-item" ngbDropdown [placement]="placement">
                         <a class="nav-link position-relative" id="dropdownBasic2" ngbDropdownToggle>
                             <i class="ft-bell font-medium-3 blue-grey darken-4"></i>

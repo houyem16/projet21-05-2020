@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {LayoutService} from '../../../shared/services/layout.service';
 import {ConfigService} from '../../../shared/services/config.service';
 import {DOCUMENT} from '@angular/common';
+import { UtilisateurService } from 'app/crowd/providers/utilisateur.service';
 
 var fireRefreshEventOnWindow = function() {
   var evt = document.createEvent("HTMLEvents");
@@ -42,7 +43,8 @@ export class FrontComponent implements OnInit, AfterViewInit, OnDestroy {
       private layoutService: LayoutService,
       private configService: ConfigService,
       @Inject(DOCUMENT) private document: Document,
-      private renderer: Renderer2
+      private renderer: Renderer2,
+      private userserv: UtilisateurService
   ) {
     // event emitter call from customizer
     this.layoutSub = layoutService.customizerChangeEmitted$.subscribe(
@@ -175,6 +177,8 @@ export class FrontComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     );
   }
+
+  
 
   ngOnInit() {
     this.config = this.configService.templateConf;

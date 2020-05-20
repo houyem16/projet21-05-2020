@@ -9,10 +9,19 @@ import {Serverrepense} from '../classes/serverrepense';
 export class UtilisateurService {
 
   urlapi = environment.api;
+  connected_email = '';
 
   constructor(private http: HttpClient) { }
 
   login(credentials) {
     return this.http.post<Serverrepense>(`${this.urlapi}user/login`, {credentials: credentials});
+  }
+
+  set_email($email) {
+    this.connected_email = $email;
+  }
+
+  get_email() {
+    return this.connected_email;
   }
 }

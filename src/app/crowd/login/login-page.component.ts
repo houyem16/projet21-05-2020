@@ -26,7 +26,8 @@ export class LoginPageComponent {
           this.userserv.login(this.credentials).subscribe(
               (res) => {
                   if (res.status === true) {
-                      alert('ok');
+                      this.userserv.set_email(this.credentials.email);
+                      this.router.navigate(['/crowd/front']);
                   } else {
                       alert(res.msg);
                   }

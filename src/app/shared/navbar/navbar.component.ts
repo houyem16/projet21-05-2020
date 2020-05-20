@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LayoutService } from '../services/layout.service';
 import { Subscription } from 'rxjs';
 import { ConfigService } from '../services/config.service';
+import { UtilisateurService } from 'app/crowd/providers/utilisateur.service';
 
 @Component({
   selector: "app-navbar",
@@ -15,13 +16,15 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   placement = "bottom-right";
   public isCollapsed = true;
   is_connected = false;
+  connected_email = "";
   layoutSub: Subscription;
   @Output()
   toggleHideSidebar = new EventEmitter<Object>();
 
   public config: any = {};
 
-  constructor(public translate: TranslateService, private layoutService: LayoutService, private configService:ConfigService) {
+  constructor(public translate: TranslateService, private layoutService: LayoutService, 
+    private configService:ConfigService, private usersev: UtilisateurService) {
     const browserLang: string = translate.getBrowserLang();
     translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : "en");
 
@@ -34,10 +37,16 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
           this.placement = "bottom-right";
         }
       });
+
+  }
+
+  get_connected_email() {
+    this.connected_email = this.usersev.get_email();
   }
 
   ngOnInit() {
     this.config = this.configService.templateConf;
+    this.get_connected_email();
   }
 
   ngAfterViewInit() {
