@@ -4,6 +4,7 @@ import { LayoutService } from '../services/layout.service';
 import { Subscription } from 'rxjs';
 import { ConfigService } from '../services/config.service';
 import { UtilisateurService } from 'app/crowd/providers/utilisateur.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-navbar",
@@ -24,7 +25,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   public config: any = {};
 
   constructor(public translate: TranslateService, private layoutService: LayoutService, 
-    private configService:ConfigService, private usersev: UtilisateurService) {
+    private configService:ConfigService, private usersev: UtilisateurService,
+    private router: Router) {
     const browserLang: string = translate.getBrowserLang();
     translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : "en");
 
@@ -37,6 +39,14 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
           this.placement = "bottom-right";
         }
       });
+
+  }
+
+  logout() {
+    console.log('logout');
+    localStorage.removeItem('email');
+    this.connected_email = '';
+    this.router.navigate(['/crowd/front']);
 
   }
 
