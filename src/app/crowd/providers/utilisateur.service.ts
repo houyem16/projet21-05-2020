@@ -17,11 +17,20 @@ export class UtilisateurService {
     return this.http.post<Serverrepense>(`${this.urlapi}user/login`, {credentials: credentials});
   }
 
+  register(user) {
+    return this.http.post<Serverrepense>(`${this.urlapi}user/register`, {utilisateur: user});
+  }
+
   set_email($email) {
-    this.connected_email = $email;
+    // this.connected_email = $email;
+    localStorage.setItem('email', $email);
   }
 
   get_email() {
-    return this.connected_email;
+    // return this.connected_email;
+    if (localStorage.getItem('email') == null || localStorage.getItem('email') == undefined) {
+      return '';
+    }
+    return localStorage.getItem('email');
   }
 }

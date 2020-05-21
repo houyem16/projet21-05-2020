@@ -25,21 +25,29 @@
                     type="text"
                     class="form-control mb-3"
                     placeholder="nom"
+                    name="nom"
+                    [(ngModel)]="nuser.nom"
                   />
                   <input
                           type="text"
                           class="form-control mb-3"
                           placeholder="prenom"
+                          name="prenom"
+                         [(ngModel)]="nuser.prenom"
                   />
                   <input
                     type="email"
                     class="form-control mb-3"
                     placeholder="email"
+                    name="email"
+                    [(ngModel)]="nuser.email"
                   />
                   <input
                     type="password"
                     class="form-control mb-3"
                     placeholder="mot de passe"
+                    name="password"
+                    [(ngModel)]="nuser.password"
                   />
                   <div
                     class="custom-control custom-checkbox custom-control-inline mb-3"
@@ -71,7 +79,7 @@
                       </button>
                     </div>
                     <div class="recover-pass">
-                      <button class="btn btn-primary">
+                      <button class="btn btn-primary" (click)="doregister()">
                         <a class="text-decoration-none text-white">
                           s'inscrire
                         </a>
